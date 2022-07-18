@@ -1,6 +1,5 @@
-import Circle from "./circle.svelte"
-import Marker from "./index.svelte";
-import Triangle from "./triangle.svelte";
-import { StandardMarkers } from "./model";
+import Marker from "./marker.svelte";
+import CircleMarker from "./circleMarker.svelte";
+import TriangleMarker from "./triangleMarker.svelte";
 
-export { Circle, StandardMarkers, Marker, Triangle as TriangleMarker };
+export { Marker, CircleMarker, TriangleMarker };

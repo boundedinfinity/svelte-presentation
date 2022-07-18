@@ -1,5 +1,4 @@
-import Marker from "./marker/index.svelte";
-import Polyline from "./polyline/index.svelte";
-import Triangle from "./triangle/index.svelte";
+import { Marker, CircleMarker, TriangleMarker } from "$lib/svg/marker";
+import { Polyline, Triangle } from "$lib/svg/shapes";
 
-export { Marker, Polyline, Triangle };
+export { Marker, CircleMarker, TriangleMarker, Polyline, Triangle };

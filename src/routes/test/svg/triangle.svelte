@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Triangle } from "$lib/svg";
+  import { Triangle } from "$lib/svg/shapes";
 </script>
 
 <div>

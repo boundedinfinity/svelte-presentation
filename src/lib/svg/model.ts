@@ -1,4 +1,4 @@
-export class ViewBox {
+export interface ViewBox {
     minX: number
     minY: number
     w: number
