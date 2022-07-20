@@ -20,3 +20,8 @@ export interface BoundingBox {
     readonly right: number;
     readonly top: number;
 }
+export interface Item {
+    v?: string;
+    c?: string;
+    id: string;
+  }
