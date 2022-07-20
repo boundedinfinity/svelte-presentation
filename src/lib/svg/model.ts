@@ -4,3 +4,9 @@ export interface ViewBox {
     w: number
     h: number
 }
+
+export interface Item {
+    v?: string;
+    c?: string;
+    id: string;
+  }
