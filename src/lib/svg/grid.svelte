@@ -7,6 +7,7 @@
   interface Item {
     v?: string;
     c?: string;
+    id: string;
   }
 
   if (rows < layout.length) {
@@ -26,11 +27,12 @@
   for (let row = 0; row < rows; row++) {
     data.push([]);
     for (let col = 0; col < cols; col++) {
+      const id = `r${row}c${col}`;
       const v = layout?.[row]?.[col];
       if (v) {
-        data[row].push({ v: v, c: "val" });
+        data[row].push({ id: id, v: v, c: "val" });
       } else {
-        data[row].push({ v: "", c: debug ? "no-val" : "" });
+        data[row].push({ id: id, v: "", c: debug ? "no-val" : "" });
       }
     }
   }
@@ -41,7 +43,7 @@
 >
   {#each data as rowArr}
     {#each rowArr as item}
-      <article class={item.c}>{item.v}</article>
+      <article id={item.id} class={item.c}>{item.v}</article>
     {/each}
   {/each}
 </main>
