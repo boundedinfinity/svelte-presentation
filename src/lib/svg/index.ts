@@ -1,4 +1,5 @@
 import { Marker, CircleMarker, TriangleMarker } from "$lib/svg/marker";
 import { Polyline, Triangle } from "$lib/svg/shapes";
+import Grid from "./grid.svelte";
 
-export { Marker, CircleMarker, TriangleMarker, Polyline, Triangle };
+export { Grid, Marker, CircleMarker, TriangleMarker, Polyline, Triangle };
