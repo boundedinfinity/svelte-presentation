@@ -1,9 +1,10 @@
 <script lang="ts">
-  import { TriangleMarker, CircleMarker, Polyline } from "$lib/svg";
+  import { Svg, TriangleMarker, CircleMarker, Polyline, Text } from "$lib/svg";
+  import Wrapper from "./_wrapper.svelte";
 </script>
 
-<div>
-  <svg width="600" height="800">
+<Wrapper>
+  <Svg width={600} height={800}>
     <defs>
       <TriangleMarker size={20} fill="red" />
       <CircleMarker size={20} fill="green" />
@@ -19,15 +20,13 @@
         { x: 496.7187194824219, y: 217.8480052947998 },
       ]}
     />
-  </svg>
-</div>
+
+    <Text dx={5} dy={5}>This is some text</Text>
+  </Svg>
+</Wrapper>
 
 <style>
-  div {
-    @apply p-24;
-  }
-
   svg {
-    @apply border-2 border-blue-300;
+    @apply border-2 border-red-300;
   }
 </style>

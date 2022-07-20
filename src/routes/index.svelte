@@ -202,7 +202,7 @@
   }
 
   td {
-    @apply border-2;
+    @apply border-2 p-[1px];
   }
 
   main {
