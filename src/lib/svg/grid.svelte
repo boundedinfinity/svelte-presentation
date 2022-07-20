@@ -1,9 +1,14 @@
 <script lang="ts">
+  import {onMount} from 'svelte'
   import { type Item } from "$lib/svg/model";
+
   export let rows: number = 0;
   export let cols: number = 0;
   export let debug: boolean = false;
   export let layout: string[][];
+  
+  let gridW:number;
+  let gridH:number;
 
   if (rows < layout.length) {
     rows = layout.length;
@@ -33,8 +38,10 @@
   }
 </script>
 
+<p>size: w: {gridW}px  h: {gridH}px</p>
+
 <div class="container">
-  <div
+  <div bind:offsetWidth={gridW} bind:offsetHeight={gridH}
     class="grid1 overlay common"
     style="display: grid; grid-template-rows: repeat({rows}, 1fr); grid-template-columns: repeat({cols}, 1fr);"
   >
@@ -44,18 +51,6 @@
       {/each}
     {/each}
   </div>
-
-  <div
-    class="grid2 overlay  common"
-    style="display: grid; grid-template-rows: repeat({rows}, 1fr); grid-template-columns: repeat({cols}, 1fr);"
-  >
-    {#each data as rowArr}
-      {#each rowArr as item}
-        <article class="no-val">XXXX</article>
-      {/each}
-    {/each}
-  </div>
-  
 </div>
 
 <style>
@@ -90,6 +85,10 @@
   }
 
   .no-val {
+    @apply border-2 border-slate-100;
+  }
+
+  .no-val-g2 {
     @apply border-2 border-slate-100;
   }
 </style>
