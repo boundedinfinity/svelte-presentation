@@ -1,8 +1,37 @@
-export interface ViewBox {
-    minX: number
-    minY: number
+export interface Box {
+    tl: Point
+    tm: Point
+    tr: Point
+    ml: Point
+    mr: Point
+    bl: Point
+    bm: Point
+    br: Point
+    t: number
+    l: number
+    r: number
+    b: number
     w: number
     h: number
+}
+
+export const emptyPoint: Point = { x: 0, y: 0 }
+
+export const emptyBox: Box = {
+    tl: emptyPoint,
+    tm: emptyPoint,
+    tr: emptyPoint,
+    bl: emptyPoint,
+    bm: emptyPoint,
+    br: emptyPoint,
+    ml: emptyPoint,
+    mr: emptyPoint,
+    t: 0,
+    b: 0,
+    l: 0,
+    r: 0,
+    w: 0,
+    h: 0,
 }
 
 export interface Point {
@@ -10,18 +39,8 @@ export interface Point {
     readonly y: number;
 }
 
-export interface BoundingBox {
-    readonly height: number;
-    readonly width: number;
-    readonly x: number;
-    readonly y: number;
-    readonly bottom: number;
-    readonly left: number;
-    readonly right: number;
-    readonly top: number;
-}
 export interface Item {
     v?: string;
     c?: string;
     id: string;
-  }
+}

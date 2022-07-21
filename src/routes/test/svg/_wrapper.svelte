@@ -15,33 +15,27 @@
 
 <svelte:window bind:innerHeight={wh} bind:innerWidth={ww} />
 
+<div on:mousemove={handleMousemove}>
+
 <table>
     <tr>
         <td>Mouse x</td><td>{m.x}</td>
         <td>Mouse y</td><td>{m.y}</td>
     </tr>
     <tr>
-        <td>WH</td><td>{wh}</td>
-        <td>WW</td><td>{ww}</td>
-    </tr>
-    <tr>
-        <td>clientH</td><td>{clientH}</td>
-        <td>clientW</td><td>{clientW}</td>
-    </tr>
-    <tr>
-        <td>offsetH</td><td>{offsetH}</td>
-        <td>offsetW</td><td>{offsetW}</td>
+        <td>Window Height</td><td>{wh}</td>
+        <td>Window Width</td><td>{ww}</td>
     </tr>
 </table>
 
 <div
-    on:mousemove={handleMousemove}
     bind:clientHeight={clientH}
     bind:clientWidth={clientW}
     bind:offsetHeight={offsetH}
     bind:offsetWidth={offsetW}
 >
     <slot />
+</div>
 </div>
 
 <style>

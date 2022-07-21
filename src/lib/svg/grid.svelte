@@ -1,6 +1,5 @@
 <script lang="ts">
-  import {onMount} from 'svelte'
-  import { type Item } from "$lib/svg/model";
+  import type { Item } from "$lib/svg/model";
 
   export let rows: number = 0;
   export let cols: number = 0;
