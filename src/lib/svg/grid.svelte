@@ -1,13 +1,20 @@
 <script lang="ts">
-  import type { Item } from "$lib/svg/model";
+  import { writable, type Writable } from "svelte/store";
+  import { onMount } from "svelte";
+  import { type LayoutItem, type Item, em2Px, Group } from "$lib/svg";
 
   export let rows: number = 0;
   export let cols: number = 0;
   export let debug: boolean = false;
-  export let layout: string[][];
-  
-  let gridW:number;
-  let gridH:number;
+  export let layout: LayoutItem[][];
+
+  const elMap = new Map<string, Writable<HTMLElement[]>>();
+  let gridEl: HTMLElement;
+  let em = 0;
+
+  onMount(() => {
+    em = em2Px(gridEl);
+  });
 
   if (rows < layout.length) {
     rows = layout.length;
@@ -27,67 +34,79 @@
     data.push([]);
     for (let col = 0; col < cols; col++) {
       const id = `r${row}c${col}`;
-      const v = layout?.[row]?.[col];
-      if (v) {
-        data[row].push({ id: id, v: v, c: "val" });
+      const item = layout?.[row]?.[col];
+      if (item) {
+        data[row].push({
+          id: id,
+          text: item.text,
+          class: "val",
+          group: item.group,
+        });
+        if (item.group) {
+          elMap.set(item.group, writable([]));
+        }
       } else {
-        data[row].push({ id: id, v: "", c: debug ? "no-val" : "" });
+        data[row].push({ id: id, text: "", class: debug ? "no-val" : "" });
       }
     }
   }
+
+  function addEl(el: HTMLElement, group: string) {
+    elMap.get(group)!.update((l) => {
+      l.push(el);
+      return l;
+    });
+  }
+
+  function updateDims() {
+    Array.from(elMap.values()).forEach((s) => s.update((s) => s));
+  }
+
+  updateDims();
 </script>
 
-<p>size: w: {gridW}px  h: {gridH}px</p>
+<svelte:window on:resize={updateDims} />
 
-<div class="container">
-  <div bind:offsetWidth={gridW} bind:offsetHeight={gridH}
-    class="grid1 overlay common"
-    style="display: grid; grid-template-rows: repeat({rows}, 1fr); grid-template-columns: repeat({cols}, 1fr);"
-  >
-    {#each data as rowArr}
-      {#each rowArr as item}
-        <article id={item.id} class={item.c}>{item.v}</article>
-      {/each}
+{#each Array.from(elMap.values()) as elements}
+  <Group {em} {elements} />
+{/each}
+
+<div
+  bind:this={gridEl}
+  class="grid"
+  style:--rows={rows}
+  style:--cols={cols}
+  style="display: grid;"
+>
+  {#each data as rowArr}
+    {#each rowArr as item}
+      {#if item.group}
+        <div use:addEl={item.group} id={item.id} class={item.class}>
+          {item.text}
+        </div>
+      {:else}
+        <div id={item.id} class={item.class}>{item.text}</div>
+      {/if}
     {/each}
-  </div>
+  {/each}
 </div>
 
 <style>
-  .container {
-    position: relative;
-    width: 90vw;
-  }
-
-  .grid1 {
-    z-index: 2;
-  }
-
-  .grid2 {
-    z-index: 1;
-  }
-
-  .group1 {
-  }
-
-  .overlay {
-    position: absolute;
-    top:0;
-    left:0;
-  }
-
-  .common {
+  .grid {
+    display: grid;
+    grid-template-rows: repeat(var(--rows), 1fr);
+    grid-template-columns: repeat(var(--cols), 1fr);
+    z-index: 100;
     @apply border-2 border-slate-700 gap-1 p-2 m-2 flex justify-center;
   }
 
   .val {
-    @apply border-2 border-green-800;
+    z-index: 100;
+    @apply border-2 border-green-800 flex justify-center align-middle;
   }
 
   .no-val {
-    @apply border-2 border-slate-100;
-  }
-
-  .no-val-g2 {
-    @apply border-2 border-slate-100;
+    z-index: 98;
+    /* @apply border-2 border-slate-100; */
   }
 </style>

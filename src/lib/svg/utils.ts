@@ -1,4 +1,5 @@
-import type { Box } from './model'
+import { emptyBox, type Box } from './model'
+
 
 
 export function em2Px(el: HTMLElement): number {
@@ -6,11 +7,12 @@ export function em2Px(el: HTMLElement): number {
     return parseFloat(getComputedStyle(el, "").fontSize)
 }
 
-export function htmlElement2Box(el: HTMLElement): Box {
-    return domRect2Box(el.getBoundingClientRect())
+export function htmlElements2Boxes(els: HTMLElement[]): Box[] {
+    return els.map(el => htmlElement2Box(el))
 }
 
-export function domRect2Box(rect: DOMRect): Box {
+export function htmlElement2Box(el: HTMLElement): Box {
+    const rect = el.getBoundingClientRect()
     const vmid: number = (rect.bottom - rect.top) / 2 + rect.top
     const hmid: number = (rect.right - rect.left) / 2 + rect.left
 
@@ -33,6 +35,10 @@ export function domRect2Box(rect: DOMRect): Box {
 }
 
 export function getGroupBox(boxes: Box[]): Box {
+    if (!boxes || boxes.length <= 0) {
+        return emptyBox;
+    }
+    
     let top: number = Number.MAX_VALUE
     let bottom: number = 0
     let left: number = Number.MAX_VALUE;

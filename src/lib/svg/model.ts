@@ -40,7 +40,23 @@ export interface Point {
 }
 
 export interface Item {
-    v?: string;
-    c?: string;
     id: string;
+    text: string;
+    group?: string;
+    class?: string;
+}
+
+export interface ItemConnection {
+    start: Point
+    end: Point
+}
+
+export interface LayoutItem {
+    text: string;
+    group?: string;
+}
+
+export interface LayoutConnection {
+    start: string;
+    end: string;
 }
