@@ -15,13 +15,14 @@ import {
   type Point,
   type LayoutItem,
   type LayoutConnection,
-  
 } from "$lib/svg/model";
 import Grid from "./grid.svelte";
 import Svg from "./svg.svelte";
 import Group from "./group.svelte";
+import { items } from "./store";
 
 export {
+  items,
   emptyBox,
   emptyPoint,
   Box,

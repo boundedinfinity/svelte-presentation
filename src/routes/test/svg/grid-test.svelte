@@ -21,7 +21,7 @@
     [null, null, null, null, null, null, null, { text: "app4", group: "g2" }],
   ];
 
-  const connections: LayoutConnection[] = [{ start: "server2", end: "the server 1" }];
+  const connections: LayoutConnection[] = [];
 </script>
 
 <Wrapper>
