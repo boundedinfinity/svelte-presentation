@@ -5,28 +5,34 @@ import {
   getGroupBox,
   htmlElement2Box,
   htmlElements2Boxes,
+  rowAndCol,
 } from "$lib/svg/utils";
 import {
   emptyBox,
   emptyPoint,
   type Box,
-  type Item,
+  type ContextItemOrNull,
+  type ContextItem,
   type ItemConnection,
   type Point,
   type LayoutItem,
+  type LayoutItemOrNull,
   type LayoutConnection,
+  type GroupContainer,
 } from "$lib/svg/model";
 import Grid from "./grid.svelte";
 import Svg from "./svg.svelte";
 import Group from "./group.svelte";
-import { items } from "./store";
+import { initItems, groupElements } from "./items";
 
 export {
-  items,
   emptyBox,
   emptyPoint,
+  GroupContainer, 
+  LayoutItemOrNull,
   Box,
-  Item,
+  ContextItemOrNull,
+  ContextItem,
   ItemConnection,
   LayoutItem,
   LayoutConnection,
@@ -42,6 +48,9 @@ export {
   Path,
   Text,
   Group,
+  groupElements,
+  initItems,
+  rowAndCol,
   em2Px,
   getGroupBox,
   htmlElement2Box,

@@ -39,11 +39,13 @@ export interface Point {
     readonly y: number;
 }
 
-export interface Item {
-    id: string;
-    text: string;
-    group?: string;
-    class?: string;
+export type ContextItemOrNull = ContextItem | null;
+
+export interface ContextItem {
+    loc: string
+    el?: HTMLElement
+    layout?: LayoutItemOrNull
+    connections?: ItemConnection[]
 }
 
 export interface ItemConnection {
@@ -51,8 +53,11 @@ export interface ItemConnection {
     end: Point
 }
 
+export type LayoutItemOrNull = LayoutItem | null
+
 export interface LayoutItem {
     text: string;
+    id?: string;
     group?: string;
 }
 
@@ -60,3 +65,9 @@ export interface LayoutConnection {
     start: string;
     end: string;
 }
+
+export interface GroupContainer {
+    name: string
+    elements: HTMLElement[]
+}
+

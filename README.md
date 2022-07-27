@@ -1,3 +1,44 @@
+
+|       |
+|       |       | t1:g1 | t2:g1 |
+|       |       |       |       |
+| t3:g2 |       |       |       |       | t5:g3 |
+| t4:g2 |       |       |       |       | t6:g3 |
+|       |       |       |       |       |       |
+|       |       | t7:g4 | t8:g4 |       |       |
+|       |
+
+
+-   []
+-   - s1:g1
+    - s2:g1
+-   []
+-   - ~
+-   - ~
+    - app1
+    - app2
+-   []
+-   ""
+    - ""
+    - ""
+    - ""
+    - ""
+    - ""
+
+
+[
+   [],
+    [
+      { text: "the server 1", group: "g1" },
+      { text: "server2", group: "g1" },
+    ],
+    [],
+    [null, { text: "app1" }, { text: "app2" }],
+    [],
+    [null, null, null, null, null, null, { text: "app3", group: "g2" }],
+    [null, null, null, null, null, null, { text: "app4", group: "g2" }],
+]
+
 # reference
 
 - https://www.w3schools.com/graphics/svg_intro.asp

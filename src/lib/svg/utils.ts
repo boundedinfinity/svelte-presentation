@@ -1,6 +1,14 @@
-import { emptyBox, type Box } from './model'
+import { emptyBox, type Box, type LayoutItemOrNull } from './model'
 
 
+export function rowAndCol<T>(items: T[][]): number[] {
+    if (!items) return [0, 0]
+
+    return [
+        items.length,
+        items.reduce((p, c) => c.length > p ? c.length : p, 0)
+    ]
+}
 
 export function em2Px(el: HTMLElement): number {
     // https://stackoverflow.com/questions/4571813/why-is-this-javascript-function-so-slow-on-firefox
@@ -38,7 +46,7 @@ export function getGroupBox(boxes: Box[]): Box {
     if (!boxes || boxes.length <= 0) {
         return emptyBox;
     }
-    
+
     let top: number = Number.MAX_VALUE
     let bottom: number = 0
     let left: number = Number.MAX_VALUE;
@@ -74,3 +82,4 @@ export function getGroupBox(boxes: Box[]): Box {
         h: height,
     }
 }
+
