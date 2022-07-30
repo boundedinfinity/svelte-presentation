@@ -70,4 +70,3 @@ export interface GroupContainer {
     name: string
     elements: HTMLElement[]
 }
-

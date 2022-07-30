@@ -1,0 +1,32 @@
+layout:
+    -   []
+    -   -   ~
+        -   ~
+        -   text: t1
+            group: g1
+        -   test: t2
+            group: g1
+    -   []
+    -   -   text: t3
+            group: g2
+        -   ~
+        -   ~
+        -   ~
+        -   ~
+        -   text: t5
+            group: g3
+    -   -   text: t4
+            group: g2
+        -   ~
+        -   ~
+        -   ~
+        -   ~
+        -   text: t6
+            group: g3
+    -   []
+    -   -   ~
+        -   ~
+        -   text: t7
+            group: g4
+        -   text: t7
+            group: g4

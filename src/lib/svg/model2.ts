@@ -1,3 +1,21 @@
+export interface DiagramInput {
+    layout?: {
+        id?: string,
+        text?: string
+    }[][],
+    groups?: {
+        id?: string,
+        text?: string,
+        items: string[]
+    }[],
+    connections?: {
+        id?: string,
+        text?: string,
+        from: string,
+        to: string
+    },
+}
+
 export class Diagram {
     layout: DiagramItem[][] = []
     groups?: DiagramGroup[] = []
@@ -34,7 +52,7 @@ export class DiagramGroup {
     items: DiagramItem[] = []
 }
 
-export enum ItemPoint {
+export enum DiagramItemPoint {
     tl = "Top Left",
     tm = "Top Middle",
     tr = "Top Right",
@@ -54,7 +72,7 @@ export enum ConnectionMarker {
 export class ConnectionDescription {
     item?: DiagramItem
     marker: ConnectionMarker = ConnectionMarker.none
-    point?: ItemPoint
+    point?: DiagramItemPoint
 }
 
 export class DiagramConnection {
