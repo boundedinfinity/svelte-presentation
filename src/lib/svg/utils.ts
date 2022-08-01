@@ -1,5 +1,5 @@
 import { emptyBox, type Box, type LayoutItemOrNull } from "./model";
-import { type DiagramInput, Diagram, DiagramItem } from "./model2";
+import { type DiagramInput, Diagram, DiagramBox } from "./model2";
 
 export function inputsToState(inputs: DiagramInput[]): Diagram {
   const diagram = new Diagram();
@@ -14,7 +14,7 @@ export function inputsToState(inputs: DiagramInput[]): Diagram {
 function inputToState(input: DiagramInput, diagram: Diagram) {
   input.layout?.forEach((row, rindex) => {
     row.forEach((iitem, cindex) => {
-      const ditem = new DiagramItem();
+      const ditem = new DiagramBox();
       const inputId = iitem.id ? parseId(iitem.id) : ""
       
     });

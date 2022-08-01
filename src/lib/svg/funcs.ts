@@ -1,4 +1,4 @@
-import { type Diagram, type DiagramItem, ConnectionDescription } from './model2'
+import { type Diagram, type DiagramBox, ConnectionDescription } from './model2'
 import YAML from 'js-yaml'
 
 function parseYaml(config: string): Diagram {
@@ -11,7 +11,7 @@ function parseDrawing(drawing: string, config: string): Diagram {
     return diagram
 }
 
-function closestPoint(from: DiagramItem, to: DiagramItem): [ConnectionDescription, ConnectionDescription] {
+function closestPoint(from: DiagramBox, to: DiagramBox): [ConnectionDescription, ConnectionDescription] {
     const fd = new ConnectionDescription()
     const td = new ConnectionDescription()
     
