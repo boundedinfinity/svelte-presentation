@@ -14,6 +14,8 @@
     "test:run": "vitest run"
   },
   "dependencies": {
+    "gsap": "^3.11.0",
+    "gsap-drawsvg": "^1.0.0",
     "svelte-watch-resize": "^1.0.3"
   },
   "devDependencies": {
