@@ -4,7 +4,7 @@
     type LayoutItemOrNull,
     em2Px,
     initItems,
-    rowAndCol,
+    itemsRowAndCol,
     groupElements,
     Group,
   } from "$lib/svg";
@@ -15,7 +15,7 @@
   export let debug: boolean = false;
   export let layout: LayoutItemOrNull[][];
 
-  [rows, cols] = rowAndCol(layout);
+  [rows, cols] = itemsRowAndCol(layout);
   const table = initItems(layout);
 
   let gridEl: HTMLElement;

@@ -15,9 +15,9 @@ function closestPoint(from: DiagramBox, to: DiagramBox): [ConnectionDescription,
     const fd = new ConnectionDescription()
     const td = new ConnectionDescription()
     
-    if(from.location?.row == to.location?.row && from.location?.col < to.location?.col) {
+    // if(from.location?.row == to.location?.row && from.location?.col < to.location?.col) {
         
-    }
+    // }
 
     return [fd, td]
 }

@@ -1,11 +1,11 @@
-import { type ContextItem, type ItemConnection, em2Px, type LayoutItemOrNull, htmlElements2Boxes, getGroupBox, emptyBox, rowAndCol, type GroupContainer } from "$lib/svg";
+import { type ContextItem, type ItemConnection, em2Px, type LayoutItemOrNull, htmlElements2Boxes, getGroupBox, emptyBox, itemsRowAndCol, type GroupContainer } from "$lib/svg";
 import { derived, writable, type Writable, type Readable } from "svelte/store";
 
 const itemMap = new Map<string, ContextItem>()
 
 function initItems(layouts: LayoutItemOrNull[][]) {
     const itemTable: ContextItem[][] = []
-    const [rows, cols] = rowAndCol(layouts)
+    const [rows, cols] = itemsRowAndCol(layouts)
 
     for (let row = 0; row < rows; row++) {
         itemTable.push([])

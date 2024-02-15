@@ -74,4 +74,6 @@ export class ConnectionDescription {
 export class DiagramConnection {
     from?: ConnectionDescription
     to?: ConnectionDescription
+    beginMarker?: DiagramConnectionMarker
+    endMarker? : DiagramConnectionMarker
 }

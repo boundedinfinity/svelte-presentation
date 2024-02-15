@@ -1,11 +1,12 @@
 import { Marker, CircleMarker, TriangleMarker } from "$lib/svg/marker";
-import { Polyline, Triangle, Circle, Path, Text } from "$lib/svg/shapes";
+import { Polyline, Triangle, Circle, Path, Text, TextBox } from "$lib/svg/shapes";
 import {
   em2Px,
   getGroupBox,
   htmlElement2Box,
   htmlElements2Boxes,
-  rowAndCol,
+  itemsRowAndCol,
+  itemsNormalize,
 } from "$lib/svg/utils";
 import {
   emptyBox,
@@ -47,10 +48,12 @@ export {
   Circle,
   Path,
   Text,
+  TextBox,
   Group,
   groupElements,
+  itemsNormalize,
   initItems,
-  rowAndCol,
+  itemsRowAndCol,
   em2Px,
   getGroupBox,
   htmlElement2Box,

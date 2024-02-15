@@ -11,5 +11,4 @@
     export let debug: boolean
 </script>
 
-<Agon numberOfPoints={3} {size} {stroke} {direction} {fill} {outline} {x} {y} {debug} />
-
+<Agon numberOfPoints={6} {size} {stroke} {direction} {fill} {outline} {x} {y} {debug} />

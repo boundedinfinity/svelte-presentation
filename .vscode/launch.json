@@ -12,6 +12,13 @@
             "webRoot": "${workspaceFolder}"
         },
         {
+            "type": "chrome",
+            "request": "launch",
+            "name": "http://localhost:3000/test/svg/mixed-test",
+            "url": "http://localhost:3000/test/svg/mixed-test",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
             "type": "pwa-node",
             "request": "launch",
             "name": "Debug Current Test File",

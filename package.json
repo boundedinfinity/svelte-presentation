@@ -16,7 +16,8 @@
   "dependencies": {
     "gsap": "^3.11.0",
     "gsap-drawsvg": "^1.0.0",
-    "svelte-watch-resize": "^1.0.3"
+    "svelte-watch-resize": "^1.0.3",
+    "svgjs": "^2.6.2"
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "next",

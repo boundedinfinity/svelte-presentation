@@ -16,7 +16,7 @@ function inputToState(input: DiagramInput, diagram: Diagram) {
     row.forEach((iitem, cindex) => {
       const ditem = new DiagramBox();
       const inputId = iitem.id ? parseId(iitem.id) : ""
-      
+
     });
   });
 }
@@ -47,13 +47,37 @@ export function parseId(input: string): InputId {
   );
 }
 
-export function rowAndCol<T>(items: T[][]): number[] {
+export function itemsRowAndCol<T>(items: T[][]): number[] {
   if (!items) return [0, 0];
 
   return [
     items.length,
     items.reduce((p, c) => (c.length > p ? c.length : p), 0),
   ];
+}
+
+export function itemsNormalize<T>(items: T[][]): T[][] {
+  const dims = itemsRowAndCol(items)
+  const rowsC = dims[0]
+  const colsC = dims[1]
+  const output: T[][] = []
+  for (let ri = 0; ri < rowsC; ri++) {
+    for (let ci = 0; ci < colsC; ci++) {
+      output[ri] = []
+    }
+  }
+  
+  for (let ri = 0; ri < rowsC; ri++) {
+    for (let ci = 0; ci < colsC; ci++) {
+      try {
+        const item = items[ri][ci]
+        output[ri][ci] = item
+      } catch {
+      }
+    }
+  }
+
+  return output;
 }
 
 export function em2Px(el: HTMLElement): number {
